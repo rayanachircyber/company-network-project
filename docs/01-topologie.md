@@ -104,9 +104,9 @@ Design and document a multi-site enterprise network with:
 ### Branch Servers
 | Server | Purpose | Interface |
 |------|--------|----------|
-| Server0 | Application / Internal | SW-BR-Access Fa0/4 |
-| Server1 | DNS / DHCP (optional) | SW-BR-Access Fa0/3 |
-| Server2 | Backup / Test | SW-BR-Access Fa0/2 |
+| Server0 | HTTP | SW-BR-Access Fa0/4 |
+| Server1 | TFTP| SW-BR-Access Fa0/3 |
+| Server2 | FTP | SW-BR-Access Fa0/2 |
 
 ---
 
