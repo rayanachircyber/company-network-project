@@ -1,0 +1,86 @@
+DSW2#show run
+Building configuration...
+
+Current configuration : 2030 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname DSW2
+!
+!
+ip routing
+!
+!
+spanning-tree mode pvst
+!
+!
+interface FastEthernet0/1
+ no switchport
+ ip address 10.10.10.5 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/2
+ switchport mode dynamic desirable
+!
+interface FastEthernet0/3
+ switchport mode dynamic desirable
+!
+interface FastEthernet0/4
+ switchport mode dynamic desirable
+!
+interface FastEthernet0/5 - 24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 0001.c964.e601
+ ip address 192.168.10.2 255.255.255.0
+ standby 10 preempt
+ standby 0 ip 192.168.10.100
+!
+interface Vlan20
+ mac-address 0001.c964.e602
+ ip address 192.168.20.2 255.255.255.0
+ standby 10 preempt
+ standby 0 ip 192.168.20.100
+!
+interface Vlan30
+ mac-address 0001.c964.e603
+ ip address 192.168.30.2 255.255.255.0
+ standby 10 preempt
+ standby 0 ip 192.168.30.100
+!
+router ospf 1
+ log-adjacency-changes
+ passive-interface Vlan1
+ passive-interface Vlan10
+ passive-interface Vlan20
+ passive-interface Vlan30
+ network 10.10.10.5 0.0.0.0 area 0
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+ network 192.168.30.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+end
