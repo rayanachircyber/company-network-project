@@ -20,3 +20,18 @@ The network consists of:
 - GRE tunnel between R1 and R2
 - Internet simulated via serial link
 
+## 🖥️ Servers & Services
+
+The network includes three centralized servers located in the 10.1.1.0/24 network behind **Router R2**:
+
+| Service | IP Address | Router |
+|---------|------------|--------|
+| HTTP | 10.1.1.30 | R2 |
+| TFTP | 10.1.1.20 | R2 |
+| FTP | 10.1.1.10 | R2 |
+
+These servers are reachable from the campus through:
+- OSPF routing
+- GRE tunnel
+- NAT on R2 for Internet-bound traffic
+
